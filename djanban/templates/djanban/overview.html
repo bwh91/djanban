@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<ul>
+{% for p in projects %}
+    <li><a href="/djanban/project/{{ p.id }}/">{{ p.name }}</a>
+    <p>{{ p.description }}</p></li>
+{% endfor %}
+</ul>
+{% endblock %}

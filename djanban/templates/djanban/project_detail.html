@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.name}}{% endblock %}
+
+{% block new_link %}
+    <span class="pull-right"><p class="navbar-btn"><a href="{% url 'djanban_create' %}" class="fm-update btn btn-primary" data-fm-head="Create Story" data-fm-callback="reload" ><strong>New</strong></a></p></span>
+    <div class="clearfix"></div>
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="row">
+    <!-- Start TODO ROW -->
+    <div class="col-lg-4 border-right" >
+      <h2 style="text-align: center">ToDo</h2>
+      <hr>
+      {% for story in stories %}
+        {% if story.status == 'ToDo' %}
+          <div class="panel panel-info">
+              <div class="panel-heading">
+                  {{ story.name }}
+              </div>
+              <div class="panel-body">
+                  <p>{{ story.description }}</p>
+              </div>
+              <div class="panel-footer">
+                  <strong>Assigned To:</strong> {{ story.assigned_to }}
+                <!--  <span class="pull-right"><a class="btn btn-primary" style="float: right;" href="#">Edit</a></span> -->
+                  <span class="pull-right">
+                    <a href="{% url 'djanban_update' story_pk=story.id %}" class="fm-update btn btn-primary" data-fm-head="Updating Story" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Edit</a>
+                    <a href="{% url 'djanban_delete' story_pk=story.id %}" class="fm-delete btn btn-danger" data-fm-head="Delete Story" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Delete</a>
+
+                  </span>
+                  <div class="clearfix"></div>
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+    <!-- End TODO ROW -->
+
+    <!-- Start Doing Row -->
+    <div class="col-lg-4 border-right">
+      <h2 style="text-align: center">Doing</h2>
+      <hr>
+      {% for story in stories %}
+        {% if story.status == 'Doing' %}
+          <div class="panel panel-primary">
+              <div class="panel-heading">
+                  {{ story.name }}
+              </div>
+              <div class="panel-body">
+                  <p>{{ story.description }}</p>
+              </div>
+              <div class="panel-footer">
+                  <strong>Assigned To:</strong> {{ story.assigned_to }}
+                  <span class="pull-right">
+                    <a href="{% url 'djanban_update' story_pk=story.id %}" class="fm-update btn btn-primary" data-fm-head="Updating Story" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Edit</a>
+                    <a href="{% url 'djanban_delete' story_pk=story.id %}" class="fm-delete btn btn-danger" data-fm-head="Delete Story" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Delete</a>
+
+                  </span>
+                <div class="clearfix"></div>
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+    <!-- End Doing Row -->
+
+    <!-- Start Done Row -->
+    <div class="col-lg-4">
+      <h2 style="text-align: center">Done</h2>
+      <hr>
+      {% for story in stories %}
+        {% if story.status == 'Done' %}
+          <div class="panel panel-success">
+              <div class="panel-heading">
+                  {{ story.name }}
+              </div>
+              <div class="panel-body">
+                  <p>{{ story.description }}</p>
+              </div>
+              <div class="panel-footer">
+                  <strong>Assigned To:</strong> {{ story.assigned_to }}
+
+                  <span class="pull-right">
+                    <a href="{% url 'djanban_update' story_pk=story.id %}" class="fm-update btn btn-primary" data-fm-head="Updating Story" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Edit</a>
+                    <a href="{% url 'djanban_delete' story_pk=story.id %}" class="fm-delete btn btn-danger" data-fm-head="Delete Story" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Delete</a>
+
+                  </span>
+                  <div class="clearfix"></div>
+              </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+    </div>
+    <!-- End Done Row -->
+
+
+  </div>
+
+
+{% endblock %}
