@@ -8,21 +8,28 @@
 
     </head>
     <body>
-      <nav class="navbar navbar-default navbar-fixed-top">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand">
-              {% block title %}{% endblock %}
+              <strong>{% block title %}{% endblock %}</strong>
             </a>
 
           </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/djanban/"><strong>All Projects</strong></a></li>
+          </ul>
+
+
           {% block new_link %}
-          
-            {% endblock %}
+
+          {% endblock %}
+
         </div>
 
       </nav>
-      <div class="page-wrapper" style="padding-left:2.5em; padding-right: 2.5em;">
+      <div class="container">
+      <div class="page-wrapper" style="padding-left:2.5em; padding-right: 2.5em; padding-top: 2em">
 
         <hr>
         {% block content %}{% endblock %}
@@ -33,5 +40,6 @@
             });
         </script>
       </div>
+    </div>
     </body>
 </html>

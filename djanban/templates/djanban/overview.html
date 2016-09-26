@@ -1,12 +1,34 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}All Projects{% endblock %}
+
+{% block new_link %}
+<span class="pull-right"><p class="navbar-btn"><a href="{% url 'djanban_project_create' %}" class="fm-update btn btn-primary" data-fm-head="Create Project" data-fm-callback="reload" ><strong>New</strong></a></p></span>
+<div class="clearfix"></div>
+{% endblock %}
 
 {% block content %}
-<ul>
+
 {% for p in projects %}
-    <li><a href="/djanban/project/{{ p.id }}/">{{ p.name }}</a>
-    <p>{{ p.description }}</p></li>
+<div class="col-lg-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <strong>{{ p.name }}</strong>
+    </div>
+    <div class="panel-body">
+      <p>{{ p.description }}</p></li>
+    </div>
+    <div class="panel-footer">
+      <a class="btn btn-info" href="/djanban/project/{{ p.id }}/">View</a>
+      <a href="{% url 'djanban_project_update' project_pk=p.id %}" class="fm-update btn btn-primary" data-fm-head="Update Project" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Edit</a>
+      <span class="pull-right">
+        <a href="{% url 'djanban_project_delete' project_pk=p.id %}" class="fm-delete btn btn-danger" data-fm-head="Delete Project" data-fm-callback="reload" data-fm-target="#story-{{ story.id }}">Delete</a>
+      </span>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
 {% endfor %}
 </ul>
 {% endblock %}
