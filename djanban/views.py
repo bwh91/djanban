@@ -18,7 +18,7 @@ class DeleteView(AjaxDeleteView):
     pk_url_kwarg = 'story_pk'
 
 class ProjectUpdateView(AjaxUpdateView):
-    model = Story
+    model = Project
     form_class = ProjectForm
     pk_url_kwarg = 'project_pk'
 
