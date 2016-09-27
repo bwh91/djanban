@@ -12,7 +12,8 @@ class Project(models.Model):
 
 class Story(models.Model):
     name = models.CharField(max_length=50)
-    assigned_to = models.ForeignKey(User, blank=True, null=True)
+    #assigned_to = models.ForeignKey(User, blank=True, null=True)
+    assigned_to = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     points = models.IntegerField(blank=True, null=True)
     sprint = models.IntegerField(blank=True, null=True)
