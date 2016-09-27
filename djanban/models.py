@@ -9,14 +9,6 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
-#class Milestone(models.Model):
-#    name = models.CharField(max_length=50)
-#    description = models.TextField()
-#    date_complete = models.DateField()
-#    project = models.ForaignKey(Project)
-#
-#    def __str__(self):
-#        return self.name
 
 class Story(models.Model):
     name = models.CharField(max_length=50)
@@ -33,7 +25,7 @@ class Story(models.Model):
     STATUS_CHOICE = (
         (TODO, 'ToDo'),
         (DOING, 'Doing'),
-        (DONE, 'DONE'),
+        (DONE, 'Done'),
     )
     status = models.CharField(
         max_length=5,
