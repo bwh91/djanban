@@ -17,7 +17,7 @@
       <hr>
       {% for story in stories %}
         {% if story.status == 'ToDo' %}
-          <div class="panel panel-info">
+          <div class="panel panel-info" draggable="true">
               <div class="panel-heading">
                   {{ story.name }}
               </div>
@@ -47,7 +47,7 @@
       <hr>
       {% for story in stories %}
         {% if story.status == 'Doing' %}
-          <div class="panel panel-primary">
+          <div class="panel panel-primary" draggable="true">
               <div class="panel-heading">
                   {{ story.name }}
               </div>
@@ -76,7 +76,7 @@
       <hr>
       {% for story in stories %}
         {% if story.status == 'Done' %}
-          <div class="panel panel-success">
+          <div class="panel panel-success" draggable="true">
               <div class="panel-heading">
                   {{ story.name }}
               </div>
