@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^update/(?P<story_pk>\d+)/$', UpdateView.as_view(), name="djanban_update"),
     url(r'^create/$', CreateView.as_view(), name="djanban_create"),
     url(r'^delete/(?P<story_pk>\d+)/$', DeleteView.as_view(), name="djanban_delete"),
-    url(r'^djanban/', views.overview, name="overview"),
+    url(r'^', views.overview, name="overview"),
 
 
 ]
